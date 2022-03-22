@@ -113,6 +113,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        dd('it works?');
+        $book->delete();
+        return redirect('/books');
     }
 }
