@@ -9,28 +9,63 @@
 <body>
     <h1>Agregar Libros</h1>
 
-    <form action="/books" method="POST" enctype = "multipart/form-data">
+    @isset($book)
+        <form action="/books/{{$book->id}}" method="POST" enctype = "multipart/form-data"> {{-- editar --}}
+        @method('PATCH') 
+    @else
+        <form action="/books" method="POST" enctype = "multipart/form-data"> {{-- Crear --}}
+    @endisset
 
         @csrf
-        
-        <labe for="title">Titulo</label><br>
-        <input type="text" name="title"><br>
+
+        <label for="title">Titulo</label><br>
+        <input type="text" name="title" value="{{ $book ->title  }} {{old('title')}} "><br>
+
+        <br> 
+        @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
 
         <label for="author">Autor</label><br>
-        <input type="text" name="author"><br>
+        <input type="text" name="author"  value="{{ $book ->author  }} {{old('author')}}"><br>
+
+        <br> 
+        @error('author')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
 
         <label for="editorial">Editorial</label><br>
-        <input type="text" name="editorial"><br>
+        <input type="text" name="editorial"  value="{{ $book ->editorial }} {{old('editorial')}}"><br>
+
+        <br> 
+        @error('editorial')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
 
         <label for="year">Año</label><br>
-        <input type="text" name="year"><br>
+        <input type="text" name="year"  value="{{ $book ->year  }} {{old('year')}}"><br>
+
+        <br> 
+        @error('year')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
 
         <label for="language">Idioma</label><br>
         <select name="language" id="language">
-            <option value="spanish">Español</option>
-            <option value="english">Ingles</option>
-            <option value="french">Frances</option>
+            <option value="spanish"{{ $book->language == 'spanish' ? 'selected' : '' }}>Español</option>
+            <option value="english"{{ $book->language == 'english' ? 'selected' : '' }}>Ingles</option>
+            <option value="french"{{ $book->language == 'french' ? 'selected' : '' }}>Frances</option>
         </select><br>
+
+        <br> 
+        @error('language')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
 
         <input type="submit" value="Submit">
     </form>

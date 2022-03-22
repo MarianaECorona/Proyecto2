@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Libros</h1>
+    <a href="books/create">Añadir Libro</a>
     <table> 
         <tr>
             <th>ID</th>
@@ -16,6 +17,7 @@
             <th>Editorial</th>
             <th>Año</th>
             <th>Lenguaje</th>
+            <th>Acciones</th>
         </tr>
         @foreach($books as $book)
             <tr>
@@ -25,6 +27,10 @@
                 <td>{{$book->editorial}}</td>
                 <td>{{$book->year}}</td>
                 <td>{{$book->language}}</td>
+                <td>
+                    <a href="books/{{$book->id}}">Ver detalle</a> |
+                    <a href="books/{{$book->id}}/edit">Editar</a>
+                </td>
             </tr>
         @endforeach
     </table>

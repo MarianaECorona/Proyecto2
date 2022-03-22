@@ -36,6 +36,14 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $request -> validate([
+            'title' => 'required',
+            'author'=> ['required', 'min:5'],
+            'editorial'=> ['required', 'min:5'],
+            'year'=> ['required', 'max:4'],
+            'language'=> 'required',
+        ]);
+
         $book = new Book();
         $book -> title = $request-> title;
         $book -> author = $request-> author;
@@ -55,7 +63,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('books.showBook', compact('book'));
     }
 
     /**
@@ -66,7 +74,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.formBooks', compact('book'));
     }
 
     /**
@@ -78,7 +86,23 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request -> validate([
+            'title' => 'required',
+            'author'=> ['required', 'min:5'],
+            'editorial'=> ['required', 'min:5'],
+            'year'=> ['required', 'max:4'],
+            'language'=> 'required',
+        ]);
+        
+        $book -> title = $request-> title;
+        $book -> author = $request-> author;
+        $book -> editorial = $request-> editorial;
+        $book -> year = $request-> year;
+        $book -> language = $request-> language;
+        $book -> save();
+
+        return redirect('/books');
+
     }
 
     /**
