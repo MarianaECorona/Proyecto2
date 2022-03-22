@@ -16,17 +16,15 @@
             <th>Editorial</th>
             <th>Año</th>
             <th>Lenguaje</th>
-            <th>Sinopsis</th>
         </tr>
         @foreach($books as $book)
             <tr>
                 <td>{{$book->id}}</td>
                 <td>{{$book->title}}</td>
-                <td>{{$book->autor}}</td>
+                <td>{{$book->author}}</td>
                 <td>{{$book->editorial}}</td>
                 <td>{{$book->year}}</td>
                 <td>{{$book->language}}</td>
-                <td>{{$book->synopsis}}</td>
             </tr>
         @endforeach
     </table>

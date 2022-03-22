@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
-use App\HTTP\Controllers\BooksController;
+use App\HTTP\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +15,10 @@ use App\HTTP\Controllers\BooksController;
 */
 
 //Mostrar
-Route::get('/books', [BooksController::class, 'index']);
-
-Route::get('/books/create', [BooksController::class, 'create']);
-
-Route::post('/books/store', [BooksController::class, 'store']);
+Route::resource('/books', BookController::class);
+// Route::get('/books', [BookController::class, 'index']);
+// Route::get('/books/create', [BookController::class, 'create']);
+// Route::post('/books/store', [BookController::class, 'store']);
 
 Route::get('/', function () {
     return view('welcome');
