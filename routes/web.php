@@ -16,10 +16,10 @@ use App\HTTP\Controllers\BookController;
 
 //Mostrar
 Route::resource('/books', BookController::class);
-// Route::get('/books', [BookController::class, 'index']);
-// Route::get('/books/create', [BookController::class, 'create']);
-// Route::post('/books/store', [BookController::class, 'store']);
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
