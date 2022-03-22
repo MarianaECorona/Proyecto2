@@ -9,8 +9,11 @@
 <body>
     <h1>Agregar Libros</h1>
 
-    <form action="/books" method="POST">
-        <label for="title">Titulo</label><br>
+    <form action="/books" method="POST" enctype = "multipart/form-data">
+
+        @csrf
+        
+        <labe for="title">Titulo</label><br>
         <input type="text" name="title"><br>
 
         <label for="author">Autor</label><br>
