@@ -93,7 +93,7 @@ class BookController extends Controller
             'year'=> ['required', 'max:4'],
             'language'=> 'required',
         ]);
-        
+
         $book -> title = $request-> title;
         $book -> author = $request-> author;
         $book -> editorial = $request-> editorial;
@@ -113,6 +113,6 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        dd('it works?');
     }
 }

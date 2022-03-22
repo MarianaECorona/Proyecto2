@@ -29,7 +29,13 @@
                 <td>{{$book->language}}</td>
                 <td>
                     <a href="books/{{$book->id}}">Ver detalle</a> |
-                    <a href="books/{{$book->id}}/edit">Editar</a>
+                    <a href="books/{{$book->id}}/edit">Editar</a> <br>
+                    <form action="/books/{{$book->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="delete">
+                    </form>
+
                 </td>
             </tr>
         @endforeach

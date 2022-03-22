@@ -19,7 +19,7 @@
         @csrf
 
         <label for="title">Titulo</label><br>
-        <input type="text" name="title" value="{{ $book ->title  }} {{old('title')}} "><br>
+        <input type="text" name="title" value="{{ isset($book) ? $book->title : '' }} {{old('title')}} "><br>
 
         <br> 
         @error('title')
@@ -28,7 +28,7 @@
         <br>
 
         <label for="author">Autor</label><br>
-        <input type="text" name="author"  value="{{ $book ->author  }} {{old('author')}}"><br>
+        <input type="text" name="author"  value="{{ isset($book) ? $book ->author : ''  }} {{old('author')}}"><br>
 
         <br> 
         @error('author')
@@ -37,7 +37,7 @@
         <br>
 
         <label for="editorial">Editorial</label><br>
-        <input type="text" name="editorial"  value="{{ $book ->editorial }} {{old('editorial')}}"><br>
+        <input type="text" name="editorial"  value="{{ isset($book) ? $book ->editorial : '' }} {{old('editorial')}}"><br>
 
         <br> 
         @error('editorial')
@@ -46,7 +46,7 @@
         <br>
 
         <label for="year">Año</label><br>
-        <input type="text" name="year"  value="{{ $book ->year  }} {{old('year')}}"><br>
+        <input type="text" name="year"  value="{{ isset($book) ? $book ->year : ''  }} {{old('year')}}"><br>
 
         <br> 
         @error('year')
@@ -56,9 +56,9 @@
 
         <label for="language">Idioma</label><br>
         <select name="language" id="language">
-            <option value="spanish"{{ $book->language == 'spanish' ? 'selected' : '' }}>Español</option>
-            <option value="english"{{ $book->language == 'english' ? 'selected' : '' }}>Ingles</option>
-            <option value="french"{{ $book->language == 'french' ? 'selected' : '' }}>Frances</option>
+            <option value="spanish"{{ isset($book) && $book->language == 'spanish' ? 'selected' : '' }}>Español</option>
+            <option value="english"{{ isset($book) && $book->language == 'english' ? 'selected' : '' }}>Ingles</option>
+            <option value="french"{{ isset($book) && $book->language == 'french' ? 'selected' : '' }}>Frances</option>
         </select><br>
 
         <br> 
