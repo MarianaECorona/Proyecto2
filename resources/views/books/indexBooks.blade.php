@@ -7,6 +7,8 @@
     <title>Libros</title>
 </head>
 <body>
+
+   <x-layout> 
     <h1>Libros</h1>
     <a href="books/create">Añadir Libro</a>
     <table> 
@@ -40,6 +42,6 @@
             </tr>
         @endforeach
     </table>
-    
+   </x-layout>
 </body>
 </html>
