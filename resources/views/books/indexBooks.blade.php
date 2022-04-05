@@ -9,9 +9,31 @@
 <body>
 
    <x-layout> 
-    <h1>Libros</h1>
-    <a href="books/create">Añadir Libro</a>
-    <table> 
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+          <div class="page-title">
+            <div class="title_left">
+                <h1>Libros</h1>
+            </div>
+            <div class="title_right">
+              <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <a class="btn btn-dark mt-3" href="books/create">Añadir Libro</a>     
+                  </span>
+                </div>
+                  <div class="container text-center mt-5">
+                           
+                  </div>
+            </div>
+          </div>
+
+          
+
+  <div class="table-responsive-sm fs-3">
+    <table class="table table-hover"> 
+      <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Titulo</th>
@@ -21,6 +43,8 @@
             <th>Lenguaje</th>
             <th>Acciones</th>
         </tr>
+
+      </thead>
         @foreach($books as $book)
             <tr>
                 <td>{{$book->id}}</td>
@@ -35,13 +59,14 @@
                     <form action="/books/{{$book->id}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="delete">
+                        <input class="btn btn-sm btn-dark" type="submit" value="delete">
                     </form>
 
                 </td>
             </tr>
         @endforeach
     </table>
+  </div>
    </x-layout>
 </body>
 </html>
