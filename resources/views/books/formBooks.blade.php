@@ -9,84 +9,87 @@
     
 </head>
 <body>
-    
+    <style type="text/css">
+        body{
+            background:#2A3F54;
+        }
+    </style>
     @isset($book) 
 
-        <div class="container text-center mt-5">
-            <h1>Editar Libro</h1>
-        </div>
         <section class="d-flex justify-content-center">
-            <div class="col-md-2 mt-5">
-                <div class="mb-3 mt-3">
+            <div class=" card col-sm-5 p-3">
+                <div class="mb-3">
+                    <div class="container text-center mt-2">
+                        <h1>Editar Libro</h1>
+                    </div>
                     <!--INICIO FORMULARIO-->
                     <form action="/books/{{$book->id}}" method="POST" enctype = "multipart/form-data"> {{-- editar --}}
                      @method('PATCH') 
 
     @else
 
-        <div class="container text-center mt-5">
-            <h1>Agregar Libros</h1>
-        </div>
         <section class="d-flex justify-content-center">
-            <div class="col-md-2 mt-5">
-                <div class="mb-3 mt-3">
+            <div class="card col-sm-5 p-3">
+                <div class="mb-3 ">
+                    <div class="container text-center mt-2">
+                        <h1>Agregar Libros</h1>
+                    </div>
                     <!--INICIO FORMULARIO-->
                     <form action="/books" method="POST" enctype = "multipart/form-data"> {{-- Crear --}}
     @endisset
 
                         @csrf
+                        <div class="mb-2"> 
+                            <label clas="form-label" for="title">Titulo</label>
+                            <input class="form-control" type="text" name="title" value="{{ isset($book) ? $book->title : '' }} {{old('title')}} "><br>
+                            
+                            @error('title')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                        <label for="title">Titulo</label><br>
-                        <input type="text" name="title" value="{{ isset($book) ? $book->title : '' }} {{old('title')}} "><br>
+                        <div class="mb-2"> 
+                            <label clas="form-label" for="author">Autor</label>
+                            <input class="form-control" type="text" name="author"  value="{{ isset($book) ? $book ->author : ''  }} {{old('author')}}"><br>
 
-                        <br> 
-                        @error('title')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <br>
+                            @error('author')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                        <label for="author">Autor</label><br>
-                        <input type="text" name="author"  value="{{ isset($book) ? $book ->author : ''  }} {{old('author')}}"><br>
+                        <div class="mb-2"> 
+                            <label clas="form-label" for="editorial">Editorial</label><br>
+                            <input class="form-control" type="text" name="editorial"  value="{{ isset($book) ? $book ->editorial : '' }} {{old('editorial')}}"><br>
 
-                        <br> 
-                        @error('author')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <br>
+                            @error('editorial')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                        <label for="editorial">Editorial</label><br>
-                        <input type="text" name="editorial"  value="{{ isset($book) ? $book ->editorial : '' }} {{old('editorial')}}"><br>
+                        <div class="mb-2">
+                            <label clas="form-label" for="year">Año</label><br>
+                            <input class="form-control" type="text" name="year"  value="{{ isset($book) ? $book ->year : ''  }} {{old('year')}}"><br>
 
-                        <br> 
-                        @error('editorial')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <br>
+                            @error('year')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                        <label for="year">Año</label><br>
-                        <input type="text" name="year"  value="{{ isset($book) ? $book ->year : ''  }} {{old('year')}}"><br>
+                        <div class="mb-2">
+                            <label clas="form-label" for="language">Idioma</label><br>
+                            <select class="form-select" name="language" id="language">
+                                <option value="spanish"{{ isset($book) && $book->language == 'spanish' ? 'selected' : '' }}>Español</option>
+                                <option value="english"{{ isset($book) && $book->language == 'english' ? 'selected' : '' }}>Ingles</option>
+                                <option value="french"{{ isset($book) && $book->language == 'french' ? 'selected' : '' }}>Frances</option>
+                            </select><br>
 
-                        <br> 
-                        @error('year')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <br>
-
-                        <label for="language">Idioma</label><br>
-                        <select name="language" id="language">
-                            <option value="spanish"{{ isset($book) && $book->language == 'spanish' ? 'selected' : '' }}>Español</option>
-                            <option value="english"{{ isset($book) && $book->language == 'english' ? 'selected' : '' }}>Ingles</option>
-                            <option value="french"{{ isset($book) && $book->language == 'french' ? 'selected' : '' }}>Frances</option>
-                        </select><br>
-
-                        <br> 
-                        @error('language')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <br>
+                            @error('language')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <input class="btn btn-dark" type="submit" value="Submit">
+                            <input class="btn btn-lg btn-dark" type="submit" value="Submit">
                         </div>
                     </form>
                 </div>
