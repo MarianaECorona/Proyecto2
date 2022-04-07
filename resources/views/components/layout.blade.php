@@ -54,7 +54,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Dashboard</a></li>
+                      <li><a href="/dashboard">Dashboard</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Formularios <span class="fa fa-chevron-down"></span></a>
@@ -105,10 +105,7 @@
               <a data-toggle="tooltip" data-placement="top" title="FullScreen">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="#">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="/login">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -129,12 +126,12 @@
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;"> Perfil</a>
+                      <a class="dropdown-item"  href="/user/profile"> Perfil</a>
                         <a class="dropdown-item"  href="javascript:;">
                           <span>Configuracion</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Ayuda</a>
-                      <a class="dropdown-item"  href="#"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a>
+                      <a class="dropdown-item"  href="/login"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a>
                     </div>
                   </li>
   
